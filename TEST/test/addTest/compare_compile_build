@@ -1,0 +1,54 @@
+EXT main.add(SB) /home/deathgod/GO/src/test/addTest/main.go
+        return a + b, true
+  0x45da40              8b44240c                MOVL 0xc(SP), AX
+  0x45da44              8b4c2408                MOVL 0x8(SP), CX
+  0x45da48              01c8                    ADDL CX, AX
+  0x45da4a              89442410                MOVL AX, 0x10(SP)
+  0x45da4e              c644241401              MOVB $0x1, 0x14(SP)
+  0x45da53              c3                      RET
+
+TEXT main.main(SB) /home/deathgod/GO/src/test/addTest/main.go
+func main() { add(10, 32) }
+  0x45da60              64488b0c25f8ffffff      MOVQ FS:0xfffffff8, CX
+  0x45da69              483b6110                CMPQ 0x10(CX), SP
+  0x45da6d              762b                    JBE 0x45da9a
+  0x45da6f              4883ec18                SUBQ $0x18, SP
+  0x45da73              48896c2410              MOVQ BP, 0x10(SP)
+  0x45da78              488d6c2410              LEAQ 0x10(SP), BP
+  0x45da7d              48b80a00000020000000    MOVQ $0x200000000a, AX
+  0x45da87              48890424                MOVQ AX, 0(SP)
+  0x45da8b              e8b0ffffff              CALL main.add(SB)
+  0x45da90              488b6c2410              MOVQ 0x10(SP), BP
+  0x45da95              4883c418                ADDQ $0x18, SP
+  0x45da99              c3                      RET
+  0x45da9a              e8e1aeffff              CALL runtime.morestack_noctxt(SB)
+  0x45da9f              90                      NOPL
+  0x45daa0              ebbe                    JMP main.main(SB)
+
+=================
+TEXT %22%22.add(SB) gofile../home/deathgod/GO/src/test/addTest/main.go
+	return a + b, true
+  0x3e5			8b44240c		MOVL 0xc(SP), AX	
+  0x3e9			8b4c2408		MOVL 0x8(SP), CX	
+  0x3ed			01c8			ADDL CX, AX		
+  0x3ef			89442410		MOVL AX, 0x10(SP)	
+  0x3f3			c644241401		MOVB $0x1, 0x14(SP)	
+  0x3f8			c3			RET			
+
+TEXT %22%22.main(SB) gofile../home/deathgod/GO/src/test/addTest/main.go
+func main() { add(10, 32) }
+  0x3f9			64488b0c2500000000	MOVQ FS:0, CX		[5:9]R_TLS_LE		
+  0x402			483b6110		CMPQ 0x10(CX), SP	
+  0x406			762b			JBE 0x433		
+  0x408			4883ec18		SUBQ $0x18, SP		
+  0x40c			48896c2410		MOVQ BP, 0x10(SP)	
+  0x411			488d6c2410		LEAQ 0x10(SP), BP	
+  0x416			48b80a00000020000000	MOVQ $0x200000000a, AX	
+  0x420			48890424		MOVQ AX, 0(SP)		
+  0x424			e800000000		CALL 0x429		[1:5]R_CALL:"".add	
+  0x429			488b6c2410		MOVQ 0x10(SP), BP	
+  0x42e			4883c418		ADDQ $0x18, SP		
+  0x432			c3			RET			
+  0x433			e800000000		CALL 0x438		[1:5]R_CALL:runtime.morestack_noctxt	
+  0x438			90			NOPL			
+  0x439			ebbe			JMP %22%22.main(SB)	

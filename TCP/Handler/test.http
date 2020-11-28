@@ -11,3 +11,7 @@ Content-Type: application/json
     "name":"xiaoming",
     "time":"2021.10.10"
 }
+
+###
+GET http://localhost:8080/index.html?first_name=libai HTTP/1.1
+

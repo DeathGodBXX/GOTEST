@@ -16,7 +16,6 @@ func main() {
 		1<<30, "超时警告"))
 	// http.HandleFunc("/fs/", func(w http.ResponseWriter, r *http.Request) {
 	// 	//只有/fs，如果输入/fs/index.html,只会带着/fs/进入此Handler,截取文件名
-	// 	fmt.Printf("%v\n", r.URL.Path[3:])
 	// 	http.ServeFile(w, r, "wwwroot"+r.URL.Path[3:])
 	// })
 	http.Handle("/", http.FileServer(http.Dir("wwwroot")))

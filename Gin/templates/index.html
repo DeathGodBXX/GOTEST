@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="http://localhost:8080/form" method="post" enctype="multipart/form-data">
+        <!-- form-data用于获取上传的文件，www主要用于获取text内容 -->
+        用户名：<input type="text" name="username" placeholder="请输入你的用户名"> <br>
+        密&nbsp;&nbsp;&nbsp;码：<input type="password" name="userpassword" placeholder="请输入你的密码"> <br>
+        文件上传:<input type="file" name="upload">
+        <input type="submit" value="提交">
+    </form>
+</body>
+
+</html>

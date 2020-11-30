@@ -1,0 +1,9 @@
+###
+GET http://localhost:8080/v1/login?name=Helen HTTP/1.1
+###
+GET http://localhost:8080/v1/submit?name=小白 HTTP/1.1
+###
+POST http://localhost:8080/v2/login?name=Helen HTTP/1.1
+
+###
+POST http://localhost:8080/v2/login?name=小白 HTTP/1.1

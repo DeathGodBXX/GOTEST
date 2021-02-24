@@ -8,7 +8,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func main() {
+func mains() {
 	r := gin.Default()
 	//1.
 	r.GET("/hello", func(c *gin.Context) {

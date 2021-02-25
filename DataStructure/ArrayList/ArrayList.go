@@ -7,7 +7,7 @@ import (
 
 type List interface {
 	Size() int                                  //获取数组大小
-	Get(index int) interface{}                  //获取指定索引的值
+	Get(index int) (interface{}, error)         //获取指定索引的值
 	Set(index int, newval interface{}) error    //修改数据
 	Insert(index int, newval interface{}) error //插入数据
 	Append(newval interface{}) error            //追加数据
@@ -43,11 +43,11 @@ func (list *ArrayList) Size() int {
 	return list.theSize
 }
 
-func (list *ArrayList) Get(index int) interface{} {
+func (list *ArrayList) Get(index int) (interface{}, error) {
 	if index < 0 || index >= list.theSize {
-		return nil
+		return nil, errors.New("索引越界，get不到下一个")
 	}
-	return list.dataStore[index]
+	return list.dataStore[index], nil
 }
 
 func (list *ArrayList) Set(index int, newval interface{}) error {

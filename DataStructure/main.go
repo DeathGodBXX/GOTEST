@@ -2,6 +2,7 @@ package main
 
 import (
 	"DataStructure/ArrayList"
+	"DataStructure/StackArray"
 	"fmt"
 )
 
@@ -28,7 +29,7 @@ func main1() {
 	}
 }
 
-func main() {
+func main2() {
 	list := ArrayList.NewArrayList()
 	list.Append("a1")
 	list.Append(11)
@@ -55,4 +56,47 @@ func main() {
 
 	fmt.Println(list)
 
+}
+
+func main3() {
+	st := StackArray.NewStack()
+	st.Push(1)
+	st.Push("ok")
+	st.Push([]byte{'s', 't', 'r', 'i', 'n', 'g'})
+	st.Push(2)
+	st.Push(3)
+	fmt.Println(st.Pop())
+	fmt.Println(st.Pop())
+	fmt.Println(st.Pop())
+	fmt.Println(st.Pop())
+	fmt.Println(st.Pop())
+}
+
+func main() {
+	st := ArrayList.NewStack()
+	st.Push(1)
+	st.Push("ok")
+	st.Push([]byte{'s', 't', 'r', 'i', 'n', 'g'})
+	st.Push(2)
+	st.Push(3)
+	fmt.Println(st.Pop())
+	fmt.Println(st.Pop())
+	fmt.Println(st.Pop())
+	fmt.Println(st.Pop())
+	fmt.Println(st.Pop())
+	fmt.Println(st.Size())
+	st.Push(1)
+	st.Push(2)
+	st.Push(3)
+	st.Push(4)
+	st.Push(5)
+	fmt.Println(st.Size())
+	st.Push(66)
+	st.Push(77)
+	st.Push(88)
+	fmt.Println("\n push later:")
+	for st.HasNext() {
+		val, _ := st.Next()
+		fmt.Println(val)
+	}
 }

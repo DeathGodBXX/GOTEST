@@ -21,7 +21,7 @@ type Stack struct {
 func NewStack() (stack *Stack) {
 	stack = new(Stack)
 	stack.array = NewArrayList()
-	stack.maxsize = 10
+	stack.maxsize = 1000
 	return
 }
 

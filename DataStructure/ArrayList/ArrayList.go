@@ -24,7 +24,7 @@ type ArrayList struct {
 //创建一个ArrayList
 func NewArrayList() (list *ArrayList) {
 	list = new(ArrayList)
-	list.dataStore = make([]interface{}, 0, 10)
+	list.dataStore = make([]interface{}, 0, 1000)
 	list.theSize = 0
 	return
 }
@@ -87,6 +87,6 @@ func (list *ArrayList) Delete(index int) {
 }
 
 func (list *ArrayList) Clear() {
-	list.dataStore = make([]interface{}, 0, 10)
+	list.dataStore = make([]interface{}, 0, 1000)
 	list.theSize = 0
 }

@@ -72,7 +72,7 @@ func main3() {
 	fmt.Println(st.Pop())
 }
 
-func main() {
+func main4() {
 	st := ArrayList.NewStack()
 	st.Push(1)
 	st.Push("ok")
@@ -97,6 +97,14 @@ func main() {
 	fmt.Println("\n push later:")
 	for st.HasNext() {
 		val, _ := st.Next()
+		fmt.Println(val)
+	}
+}
+
+func main() {
+	path := "/home/deathgod/GO/src"
+	files, _ := ArrayList.GetAll(path)
+	for _, val := range files {
 		fmt.Println(val)
 	}
 }

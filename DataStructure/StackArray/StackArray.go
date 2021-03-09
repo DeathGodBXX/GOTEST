@@ -30,6 +30,7 @@ func NewStack() (stack *Stack) {
 func (mystack *Stack) Size() int {
 	return mystack.currentsize
 }
+
 func (mystack *Stack) Clear() {
 	mystack.data = make([]interface{}, 0, 10)
 	mystack.maxsize = 10

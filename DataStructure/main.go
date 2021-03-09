@@ -1,37 +1,35 @@
 package main
 
 import (
-	"DataStructure/LinkList"
+	"DataStructure/ArrayList"
+	"DataStructure/ReadFileSystem"
 	"fmt"
 )
 
-func mainst() {
-	st := LinkList.NewStack()
-	st.Push(1)
-	st.Push(2.1)
-	st.Push("ok")
+func maintest() {
+	path := "/home/deathgod/GO/src"
+	files := ReadFileSystem.FsByStack(path)
+	for _, f := range files {
+		fmt.Println(f)
+	}
 
-	for v, err := st.Pop(); err == nil; v, err = st.Pop() {
-		fmt.Println(v)
+	files1 := ReadFileSystem.FsByQueue(path)
+	for _, f1 := range files1 {
+		fmt.Println(f1)
 	}
-	println("st is empty? ", st.Isempty())
-	for i := 0; i < 10; i++ {
-		st.Push(i)
-	}
-	st.Clear()
-	fmt.Println("st is empty? ", st.Isempty())
 
-	st.Push(11)
-	st.Push(22)
-	st.Push(33)
-	for it := st.Iterator(); it.HasNext(); {
-		fmt.Println(it.Next(), st.Size())
+	files2 := ReadFileSystem.FsByStackArrayList(path)
+	for _, f2 := range files2 {
+		fmt.Println(f2)
 	}
-	fmt.Println(st.Pop())
+
+	fmt.Println(len(files))
+	fmt.Println(len(files1))
+	fmt.Println(len(files2))
 }
 
 func main() {
-	qe := LinkList.NewQueue()
+	qe := ArrayList.NewQueue()
 	qe.Push(1)
 	fmt.Println(qe.Size())
 	qe.Push("ok")
@@ -48,16 +46,20 @@ func main() {
 	qe.Push(11)
 	qe.Push(22)
 	qe.Push(33)
-	for it := qe.Iterator(); it.HasNext(); {
-		fmt.Println(it.Next(), qe.Size())
+	for qe.HasNext() {
+		next, _ := qe.Next()
+		fmt.Println(next)
+	}
+	fmt.Println(qe.Pop())
+	qe.Clear()
+	fmt.Println("++++++++++")
+
+	qe.Push(11)
+	qe.Push(22)
+	qe.Push(33)
+
+	for qe.HasNext() {
+		fmt.Println(qe.Next())
 	}
 	fmt.Println(qe.Pop())
 }
-
-// func main() {
-// 	path := "/home/deathgod/Go/src"
-// 	//利用迭代器模式设置栈迭代器，队列迭代器
-// 	// for v := range LinkList.GetFs(path) {
-
-// 	// }
-// }

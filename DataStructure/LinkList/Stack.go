@@ -11,6 +11,16 @@ type StackLinkList interface {
 	Size() int
 }
 
+type StackIterable interface {
+	Iterator() *Stack
+}
+
+//Iterator pattern
+type StackIterator interface {
+	HasNext() bool
+	Next() interface{}
+}
+
 type Node struct {
 	data interface{} //大小是16字节，对齐量是8字节
 	next *Node
@@ -19,12 +29,6 @@ type Node struct {
 type Stack struct {
 	top  *Node
 	size int
-}
-
-//Iterator pattern
-type StackIterator interface {
-	HasNext() bool
-	Next() interface{}
 }
 
 func NewStack() *Stack {
@@ -43,7 +47,7 @@ func (st *Stack) Push(data interface{}) {
 }
 
 func (st *Stack) Pop() (interface{}, error) {
-	if st.Isempty() {
+	if st.IsEmpty() {
 		return nil, errors.New("栈为空")
 	}
 	data := st.top.data
@@ -52,7 +56,7 @@ func (st *Stack) Pop() (interface{}, error) {
 	return data, nil
 }
 
-func (st *Stack) Isempty() bool {
+func (st *Stack) IsEmpty() bool {
 	return st.top == nil
 }
 
@@ -66,7 +70,7 @@ func (st *Stack) Size() int {
 }
 
 func (it *Stack) HasNext() bool {
-	return !it.Isempty()
+	return !it.IsEmpty()
 }
 
 func (it *Stack) Next() (data interface{}) {
@@ -83,7 +87,7 @@ func (st *Stack) Iterator() *Stack {
 	it := new(Stack)
 	// it = st  it和st指向共用同一个指向Stack指针
 	// 下面的赋值，it拷贝了st指向的Stack top和size,st指向的Stack不会改变，相当于深拷贝了1个Stack;
-	//后续st可以继续使用（指向未被释放）
+	// 后续st可以继续使用（指向未被释放）
 	it.top = st.top
 	it.size = st.size
 	return it

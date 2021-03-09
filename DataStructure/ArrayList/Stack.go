@@ -8,8 +8,8 @@ type StackArrayList interface {
 	Clear()                      //清空
 	Pop() (interface{}, error)   //出栈
 	Push(data interface{}) error //入栈
-	isFull() bool                //栈是否满
-	isEmpty() bool               //栈是否空
+	IsFull() bool                //栈是否满
+	IsEmpty() bool               //栈是否空
 }
 
 type Stack struct {
@@ -34,7 +34,7 @@ func (mystack *Stack) Clear() {
 }
 
 func (mystack *Stack) Pop() (interface{}, error) {
-	if mystack.isEmpty() {
+	if mystack.IsEmpty() {
 		return nil, errors.New("栈为空，没有元素可以删除")
 	}
 	popvalue := mystack.array.dataStore[mystack.array.theSize-1]
@@ -44,7 +44,7 @@ func (mystack *Stack) Pop() (interface{}, error) {
 }
 
 func (mystack *Stack) Push(data interface{}) error {
-	if mystack.isFull() {
+	if mystack.IsFull() {
 		return errors.New("栈是满的，不能再添加元素")
 	}
 	mystack.array.dataStore = append(mystack.array.dataStore, data)
@@ -52,10 +52,10 @@ func (mystack *Stack) Push(data interface{}) error {
 	return nil
 }
 
-func (mystack *Stack) isFull() bool {
+func (mystack *Stack) IsFull() bool {
 	return mystack.array.theSize >= mystack.maxsize
 }
 
-func (mystack *Stack) isEmpty() bool {
+func (mystack *Stack) IsEmpty() bool {
 	return mystack.array.theSize == 0
 }

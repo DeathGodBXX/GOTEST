@@ -6,6 +6,10 @@ type QueueLinkList StackLinkList
 
 type QueueIterator StackIterator
 
+type QueueIterable interface {
+	Iterator() *Queue
+}
+
 //只包含head,tail的队列
 type Queue struct {
 	head, tail *Node //结构体不能赋值为nil，但是成员变量可以赋值为nil

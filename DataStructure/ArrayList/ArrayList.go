@@ -5,6 +5,7 @@ import (
 	"fmt"
 )
 
+//Construct ArrayList by slice
 type List interface {
 	Size() int                                  //获取数组大小
 	Get(index int) (interface{}, error)         //获取指定索引的值

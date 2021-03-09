@@ -42,24 +42,4 @@ func main() {
 	qe.Clear()
 	fmt.Println(qe.Size())
 	fmt.Println(qe.IsEmpty())
-
-	qe.Push(11)
-	qe.Push(22)
-	qe.Push(33)
-	for qe.HasNext() {
-		next, _ := qe.Next()
-		fmt.Println(next)
-	}
-	fmt.Println(qe.Pop())
-	qe.Clear()
-	fmt.Println("++++++++++")
-
-	qe.Push(11)
-	qe.Push(22)
-	qe.Push(33)
-
-	for qe.HasNext() {
-		fmt.Println(qe.Next())
-	}
-	fmt.Println(qe.Pop())
 }

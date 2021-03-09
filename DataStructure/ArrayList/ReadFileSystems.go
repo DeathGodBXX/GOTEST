@@ -4,6 +4,8 @@ import (
 	"io/ioutil"
 )
 
+//Get fs Tree
+
 //use Stack to store folders, files to store all content
 //use another Stack to record current level,since it's possible to jump two level
 //and no signal to show index skip

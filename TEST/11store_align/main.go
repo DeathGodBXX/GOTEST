@@ -29,6 +29,22 @@ type Part3 struct {
 	e int32
 }
 
+type test struct {
+	number int
+	data interface{}
+}
+
+type test1 struct{
+	data interface{}
+	number int
+}
+
+type stack struct{
+	size int8
+	data interface{}
+	next *stack //指针也占用内存
+}
+
 func main() {
 	part1 := Part1{}
 	part2 := Part2{}
@@ -49,4 +65,28 @@ func main() {
 	fmt.Printf("Part1 size:%d, align:%d \n", unsafe.Sizeof(part1), unsafe.Alignof(part1))
 	fmt.Printf("Part2 size:%d, align:%d\n", unsafe.Sizeof(part2), unsafe.Alignof(part2))
 	fmt.Printf("Part3 size:%d, align:%d\n", unsafe.Sizeof(part3), unsafe.Alignof(part3))
+	
+	var a interface{}
+	fmt.Println(unsafe.Sizeof(a), unsafe.Alignof(a))
+	a = 1
+	fmt.Println(unsafe.Sizeof(a), unsafe.Alignof(a))
+	a = "ok"
+	fmt.Println(unsafe.Sizeof(a), unsafe.Alignof(a))
+
+	b := test{data: 3, number: 2}
+	fmt.Println(unsafe.Sizeof(b), unsafe.Alignof(b))
+
+	c := test1{data:3, number: 2}
+	fmt.Println(unsafe.Sizeof(c), unsafe.Alignof(c))
+
+	st := stack{ data: 0,next: nil, size:1}
+	st1 := stack{data: 1, next: &st, size:2}
+	fmt.Println(unsafe.Sizeof(st), unsafe.Alignof(st))
+	fmt.Println(unsafe.Sizeof(st1), unsafe.Alignof(st1))
+
+	//指针占用的内存大小8个字节（或许是由于操作系统是64位的,设置的8字节)
+	stt := &stack{data:0,next:nil,size:1}
+	stt1 := &stack{data:1,next:stt, size:2}
+	fmt.Println(unsafe.Sizeof(stt), unsafe.Alignof(stt))
+	fmt.Println(unsafe.Sizeof(stt1), unsafe.Alignof(stt1))
 }

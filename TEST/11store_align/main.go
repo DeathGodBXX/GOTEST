@@ -66,6 +66,7 @@ func main() {
 	fmt.Printf("Part2 size:%d, align:%d\n", unsafe.Sizeof(part2), unsafe.Alignof(part2))
 	fmt.Printf("Part3 size:%d, align:%d\n", unsafe.Sizeof(part3), unsafe.Alignof(part3))
 	
+	fmt.Println("=========================")
 	var a interface{}
 	fmt.Println(unsafe.Sizeof(a), unsafe.Alignof(a))
 	a = 1

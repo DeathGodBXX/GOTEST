@@ -6,11 +6,14 @@ import (
 )
 
 func main() {
-	arr := []int{5, 7, 3, 2, 1, 10, 4, 6, 8, 9}
+	arr := []int{4, 3, 3, 5, 1, 4, 4, 4, 3}
 	// SortAlgorithm.SelectSort(arr)
-	// fmt.Println(arr)
 	// SortAlgorithm.InsertSort(arr)
-	// fmt.Println(arr)
-	SortAlgorithm.BubbleSort(arr)
+	// 	SortAlgorithm.BubbleSort(arr)
+	// var arr []int
+	// for i := 0; i < 100; i++ {
+	// 	arr = append(arr, rand.Intn(100))
+	// }
+	SortAlgorithm.SonicSort(arr)
 	fmt.Println(arr)
 }

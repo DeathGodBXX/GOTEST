@@ -1,0 +1,5 @@
+*.txt
+!main.go
+/DataStructure/main*.go
+sync_safety.code-workspace
+maigo.go

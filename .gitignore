@@ -1,5 +1,6 @@
-*.txt
 !main.go
+!/DataStructure/main.go
+/DataStructure/*.txt
 /DataStructure/main*.go
 sync_safety.code-workspace
 maigo.go

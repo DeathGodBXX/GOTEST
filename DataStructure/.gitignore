@@ -1,2 +1,4 @@
 *.txt
-DataStructure/main*.go
+main.go
+mainArrayList.go
+

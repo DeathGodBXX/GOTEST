@@ -7,8 +7,8 @@ func CountSort(db1 []string, db2 []int) []string {
 		return db1
 	}
 	//record max and min integer
-	max := 90
-	min := 100
+	max := db2[0]
+	min := db2[1]
 	for _, v := range db2 {
 		if v > max {
 			max = v

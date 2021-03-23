@@ -4,3 +4,4 @@
 /DataStructure/main*.go
 sync_safety.code-workspace
 maigo.go
+/DataStructure/test.c

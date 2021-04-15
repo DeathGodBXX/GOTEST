@@ -1,5 +1,6 @@
 #include <vector>
 #include <algorithm>
+
 using std::max;
 using std::min;
 using std::vector;

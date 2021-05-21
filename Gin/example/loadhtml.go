@@ -11,6 +11,7 @@ func LoadHTML() {
 	r := gin.Default()
 
 	r.LoadHTMLGlob("templates/**/*")
+	r.LoadHTMLFiles()
 
 	r.GET("/posts/index", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "posts/index.html", gin.H{

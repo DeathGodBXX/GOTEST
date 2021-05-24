@@ -15,8 +15,9 @@ func main() {
 		fmt.Printf("filepath:%v", filepath.Dir(ex))
 	}
 
-	go example.Testexample()
+	// go example.Testexample()
 	go example.DefinedSelfHTML()
+	go example.ParameterBind()
 	example.LoadHTML()
 
 }

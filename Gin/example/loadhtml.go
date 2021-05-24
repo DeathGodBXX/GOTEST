@@ -1,6 +1,7 @@
 package example
 
 import (
+	"encoding/json"
 	"html/template"
 	"net/http"
 
@@ -63,6 +64,15 @@ func DefinedSelfHTML() {
 		c.JSON(http.StatusOK, msg)
 	})
 
+	r.POST("/json", func(c *gin.Context) {
+		//从c.Request.Body读取数据
+		b, _ := c.GetRawData()
+
+		//解析json数据为map或者结构体
+		var m map[string]interface{}
+		_ = json.Unmarshal(b, &m)
+		c.JSON(http.StatusOK, m)
+	})
 	//需要下载google的goprotobuf库
 	// r.GET("/protobuf", func(c *gin.Context) {
 	// 	// type Test struct {
@@ -78,6 +88,7 @@ func DefinedSelfHTML() {
 	// 	c.ProtoBuf(http.StatusOK, data)
 	// })
 
+	//获取路由？之后的querystring
 	r.GET("/user/search", func(c *gin.Context) {
 		username := c.DefaultQuery("username", "大黄")
 		address := c.Query("address")
@@ -88,6 +99,26 @@ func DefinedSelfHTML() {
 		})
 	})
 
+	//发送POST请求，使用form表单提交数据
+	r.POST("/user/search", func(c *gin.Context) {
+		username := c.PostForm("username")
+		address := c.PostForm("address")
+		c.JSON(http.StatusOK, gin.H{
+			"message":  "ok",
+			"username": username,
+			"address":  address,
+		})
+	})
+
+	//发送GET请求，从url路径中获取参数
+	r.GET("/user/search/:username/:address", func(c *gin.Context) {
+		username := c.Param("username")
+		address := c.Param("address")
+		c.JSON(http.StatusOK, gin.H{
+			"username": username,
+			"address":  address,
+		})
+	})
 	//每个engine使用不同的端口号，否则会冲突
 	r.Run(":8081")
 }

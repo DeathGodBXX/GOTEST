@@ -16,8 +16,9 @@ func main() {
 	}
 
 	// go example.Testexample()
-	go example.DefinedSelfHTML()
+	// go example.DefinedSelfHTML()
 	go example.ParameterBind()
-	example.LoadHTML()
+	example.UpLoadFile()
+	// example.LoadHTML()
 
 }

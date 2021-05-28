@@ -57,6 +57,7 @@ func mains() {
 	r.GET("/home", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "home.html", "")
 	})
+
 	r.MaxMultipartMemory = 1024 * 1024
 	r.POST("/upload", func(c *gin.Context) {
 		form, err := c.MultipartForm()

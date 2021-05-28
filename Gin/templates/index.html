@@ -1,3 +1,4 @@
+{{define "index.html"}}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +10,7 @@
 </head>
 
 <body>
-    <form action="http://localhost:8083/test" method="post" enctype="multipart/form-data">
+    <form action="/test" method="post" enctype="multipart/form-data">
         <!-- form-data用于获取上传的文件，www主要用于获取text内容 -->
         用户名：<input type="text" name="username" placeholder="请输入你的用户名"> <br>
         密&nbsp;&nbsp;&nbsp;码：<input type="password" name="userpassword" placeholder="请输入你的密码"> <br>
@@ -19,3 +20,4 @@
 </body>
 
 </html>
+{{end}}

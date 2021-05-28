@@ -73,21 +73,27 @@ func UpLoadFile() {
 		r.HandleContext(c) //路由跳转，重定向
 	})
 
-	r.LoadHTMLGlob("templates/*.html")
+	r.LoadHTMLFiles("templates/users/home.html") //由于浏览器缓存，导致一些请求页面一直失败
+	r.GET("/homessss", func(c *gin.Context) {
+		c.HTML(http.StatusOK, "home.html", gin.H{
+			"su": "true",
+		})
+	})
 
+	// r.LoadHTMLGlob("templates/*.html")
 	userGroup := r.Group("/user")
-	{
-		userGroup.GET("/index", func(c *gin.Context) {
-			c.HTML(http.StatusOK, "index.html", gin.H{
-				"message": "ok",
-			})
-		})
-		userGroup.GET("/home", func(c *gin.Context) {
-			c.HTML(http.StatusOK, "home.html", gin.H{
-				"su": "true",
-			})
-		})
-	}
+	// {
+	// 	userGroup.GET("/index", func(c *gin.Context) {
+	// 		c.HTML(http.StatusOK, "index.html", gin.H{
+	// 			"message": "ok",
+	// 		})
+	// 	})
+	// 	userGroup.GET("/home", func(c *gin.Context) {
+	// 		c.HTML(http.StatusOK, "home.html", gin.H{
+	// 			"su": "true",
+	// 		})
+	// 	})
+	// }
 
 	r.LoadHTMLGlob("templates/*/*.html")
 
